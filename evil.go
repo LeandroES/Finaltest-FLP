@@ -37,8 +37,7 @@ func main() {
 	for y := 0; y < size.Y; y++ {
 		wg.Add(1)
 		y := y
-		go func() {
-			for x := 0; x < size.X; x++ {
+		for x := 0; x < size.X; x++ {
 				pixel := img.At(x, y)
 				originalColor := color.RGBAModel.Convert(pixel).(color.RGBA)
 				// Offset colors a little, adjust it to your taste
@@ -56,7 +55,6 @@ func main() {
 				})
 			}
 			defer wg.Done()
-		}()
 	}
 	wg.Wait()
 
